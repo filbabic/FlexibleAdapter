@@ -7,3 +7,5 @@ into a list of FlexibleHolder implementations, and set them in the adapter!
 
 The only things you have to provide are a layout inside the FlexibleHolder implementation, and the way of displaying it.
 Using the reactive "click listener" is optional, but recommended, as it is a clean and simple way to handle click events.
+
+To use just add a dependency: compile 'com.github.filbabic:flexibleadapter:0.0.1' and you're set!
