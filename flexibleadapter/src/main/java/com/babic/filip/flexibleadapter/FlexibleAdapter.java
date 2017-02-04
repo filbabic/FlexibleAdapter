@@ -68,7 +68,7 @@ public class FlexibleAdapter<T extends FlexibleHolder> extends RecyclerView.Adap
      * @return the item for the position within lists's range, or null
      **/
     public T getItem(int position) {
-        return position < flexibleItems.size() ? getItem(position) : null;
+        return position < flexibleItems.size() ? flexibleItems.get(position) : null;
     }
 
     /**
