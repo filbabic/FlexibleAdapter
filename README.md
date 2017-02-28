@@ -11,11 +11,12 @@ Using the reactive "click listener" is optional, but recommended, as it is a cle
 To use just add a dependency: 
 
 ```
-compile 'com.github.filbabic:flexibleadapter:0.0.1' 
+compile 'com.github.filbabic:flexibleadapter:1.0.0' 
 
 ```
 and you're set!
 
+Be sure to check out the sample usage of the adapter, with a single text view holder, and the click listener.
 ---
 
 Copyright 2017 Filip Babić
