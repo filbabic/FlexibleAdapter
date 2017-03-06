@@ -10,6 +10,7 @@ import com.babic.filip.flexibleadapter.FlexibleHolder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Filip Babic @cobe
@@ -30,6 +31,7 @@ public class CardHolder implements FlexibleHolder {
     TextView cardOwner;
 
     private final CreditCardModel creditCardModel;
+    private Unbinder unbinder;
 
     public CardHolder(CreditCardModel creditCardModel) {
         this.creditCardModel = creditCardModel;
@@ -42,11 +44,18 @@ public class CardHolder implements FlexibleHolder {
 
     @Override
     public void displayView(@NonNull View rootView) {
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         cardBankName.setText(creditCardModel.getCardBankName());
         cardNumber.setText(creditCardModel.getCardNumber());
         cardExpireDate.setText(creditCardModel.getCardExpireDate());
         cardOwner.setText(creditCardModel.getCardOwnerName());
+    }
+
+    @Override
+    public void recycle() {
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 }

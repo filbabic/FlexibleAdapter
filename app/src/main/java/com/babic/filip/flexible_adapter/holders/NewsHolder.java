@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Filip Babic @cobe
@@ -35,6 +36,7 @@ public class NewsHolder implements FlexibleHolder {
     TextView numberOfComments;
 
     private final NewsItemModel newsItem;
+    private Unbinder unbinder;
 
     public NewsHolder(NewsItemModel newsItem) {
         this.newsItem = newsItem;
@@ -47,7 +49,7 @@ public class NewsHolder implements FlexibleHolder {
 
     @Override
     public void displayView(@NonNull View rootView) {
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         Glide.with(rootView.getContext()).load(newsItem.getArticleModel().getNewsImagePath()).into(articleImage);
 
@@ -55,5 +57,12 @@ public class NewsHolder implements FlexibleHolder {
         articleTitle.setText(newsItem.getArticleModel().getNewsTitle());
         numberOfComments.setText(String.valueOf(newsItem.getNumberOfComments()));
         numberOfRecommends.setText(String.valueOf(newsItem.getNumberOfRecommends()));
+    }
+
+    @Override
+    public void recycle() {
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 }

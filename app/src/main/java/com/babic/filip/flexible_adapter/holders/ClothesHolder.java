@@ -14,6 +14,7 @@ import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Filip Babic @cobe
@@ -31,6 +32,7 @@ public class ClothesHolder implements FlexibleHolder {
     ImageView itemImage;
 
     private final ClothesItemModel clothesModel;
+    private Unbinder unbinder;
 
     public ClothesHolder(ClothesItemModel clothesModel) {
         this.clothesModel = clothesModel;
@@ -43,10 +45,17 @@ public class ClothesHolder implements FlexibleHolder {
 
     @Override
     public void displayView(@NonNull View rootView) {
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
 
         itemTitle.setText(clothesModel.getItemTitle());
         itemCost.setText(String.format(Locale.getDefault(), "%d$", clothesModel.getItemCost()));
         Glide.with(rootView.getContext()).load(clothesModel.getItemImagePath()).into(itemImage);
+    }
+
+    @Override
+    public void recycle() {
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
     }
 }

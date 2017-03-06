@@ -23,4 +23,11 @@ public interface FlexibleHolder {
      * @param rootView the View we inflated, ready to display
      **/
     void displayView(@NonNull View rootView);
+
+    /**
+     * Use this method to trigger your recycle logic when needed,
+     * a common example is to null out views, or unbind ButterKnife bound views,
+     * stop requests(in case you have any) and similar.
+     * **/
+    void recycle();
 }

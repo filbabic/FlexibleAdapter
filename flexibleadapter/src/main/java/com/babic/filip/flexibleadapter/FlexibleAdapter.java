@@ -49,6 +49,15 @@ public class FlexibleAdapter<T extends FlexibleHolder> extends RecyclerView.Adap
     }
 
     /**
+     * @param holder the holder whose views we want to recycle
+     * **/
+    @Override
+    public void onViewRecycled(FlexibleViewHolder holder) {
+        holder.recycle();
+        super.onViewRecycled(holder);
+    }
+
+    /**
      * @param position the current item position(in adapter data set)
      * @return the layout resource to inflate for the said item
      * default layout here is just a transparent item divider
