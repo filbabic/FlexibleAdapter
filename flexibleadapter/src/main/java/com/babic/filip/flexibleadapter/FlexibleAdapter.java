@@ -43,14 +43,16 @@ public class FlexibleAdapter<T extends FlexibleHolder> extends RecyclerView.Adap
      **/
     @Override
     public void onBindViewHolder(FlexibleViewHolder holder, int position) {
-        if (holder != null && getItem(position) != null) {
-            holder.handleItem(getItem(position));
+        T item = getItem(position);
+
+        if (holder != null && item != null) {
+            holder.handleItem(item);
         }
     }
 
     /**
      * @param holder the holder whose views we want to recycle
-     * **/
+     **/
     @Override
     public void onViewRecycled(FlexibleViewHolder holder) {
         holder.recycle();
@@ -64,7 +66,9 @@ public class FlexibleAdapter<T extends FlexibleHolder> extends RecyclerView.Adap
      **/
     @Override
     public int getItemViewType(int position) {
-        return getItem(position) != null ? getItem(position).getLayout() : R.layout.default_layout;
+        T item = getItem(position);
+
+        return item != null ? item.getLayout() : R.layout.default_layout;
     }
 
     @Override
@@ -91,7 +95,9 @@ public class FlexibleAdapter<T extends FlexibleHolder> extends RecyclerView.Adap
         }
     }
 
-    /** @param dataSource the new items we want to add **/
+    /**
+     * @param dataSource the new items we want to add
+     **/
     public void addItems(List<T> dataSource) {
         if (dataSource != null && !dataSource.isEmpty()) {
             flexibleItems.addAll(dataSource);
