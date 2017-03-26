@@ -11,9 +11,16 @@ Using the reactive "click listener" is optional, but recommended, as it is a cle
 To use just add a dependency: 
 
 ```
+//this version contains RxJava and RxAndroid 2 as it's dependencies
 compile 'com.github.filbabic:flexibleadapter:1.0.0' 
+```
+
+Because I realised there might be users who just don't want to add Rx due to dex limits, or other means of binding click events, I've also created an separate version with only the basic adapter and holder :
 
 ```
+compile 'com.github.filbabic:flexibleadapter:1.0.1' 
+```
+
 and you're set!
 
 Be sure to check out the sample usage of the adapter, with a single text view holder, and the click listener.
