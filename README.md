@@ -15,13 +15,16 @@ To use just add a dependency:
 compile 'com.github.filbabic:flexibleadapter:1.0.0' 
 ```
 
-Because I realised there might be users who just don't want to add Rx due to dex limits, or other means of binding click events, I've also created an separate version with only the basic adapter and holder :
+Rx-dependency-free version:
 
 ```
-compile 'com.github.filbabic:flexibleadapter:1.0.1' 
+compile 'com.github.filbabic:flexibleadapter:1.0.2' 
 ```
 
 and you're set!
+
+#P.S. I've added an additional method used to "recycle" the Holders, such as unbind ButterKnife bound views, cancel network requests if there are any etc. Also I've added smaller optimizations by reducing the amount of queries per list.
+---
 
 Be sure to check out the sample usage of the adapter, with a single text view holder, and the click listener.
 ---
